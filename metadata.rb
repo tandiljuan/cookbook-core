@@ -3,7 +3,7 @@ maintainer       "Juan Manuel Lopez"
 maintainer_email ""
 license          "Apache 2.0"
 description      "Bootstrap a vagrant environment"
-version          "0.0.1"
+version          "0.0.2"
 
 depends "apt",              "~> 2.7.0"
 depends "build-essential",  "~> 2.2.2"
