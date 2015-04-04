@@ -1,7 +1,7 @@
 cookbook-core
 =============
 
-Base cookbook from where fork and create other cookbooks
+Base cookbook used to do the initial environment setup.
 
 ### Used cookbooks
 
@@ -11,4 +11,4 @@ Base cookbook from where fork and create other cookbooks
 
 ### Slight setup
 
-This cookbook require the `node[:smbfs][:install]` attribute set to `true` to install the install and configure `smbfs`.
+This cookbook require the `node[:smbfs][:install]` attribute set to `true` to install and configure `smbfs`.
