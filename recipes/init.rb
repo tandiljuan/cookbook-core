@@ -20,6 +20,14 @@
 include_recipe "apt"
 include_recipe "vim"
 
+# Run `apt-get upgrade` without being prompted
+# @see http://serverfault.com/a/482740
+execute "apt-get upgrade" do
+    command "DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' upgrade"
+    ignore_failure true
+    only_if "if [ `/usr/lib/update-notifier/apt-check 2>&1 | cut -d ';' -f 1` -gt 0 -o `/usr/lib/update-notifier/apt-check 2>&1 | cut -d ';' -f 2` -gt 0 ]; then exit 0; else exit 1; fi"
+end
+
 # Mount any configured SAMBA shared directory
 # http://jsosic.wordpress.com/2012/08/13/accessing-host-filesystem-from-virtualbox-guest/
 if node[:smbfs][:install] === true
