@@ -18,3 +18,5 @@
 #
 
 include_recipe "cookbook-core::init"
+include_recipe "cookbook-core::workspace"
+
