@@ -23,8 +23,8 @@
 # @see http://stackoverflow.com/a/9250482
 execute "apt-get update & autoremove" do
   command <<-SHELL
-    DEBIAN_FRONTEND=noninteractive apt-get --force-yes update --fix-missing
-    DEBIAN_FRONTEND=noninteractive apt-get --force-yes autoremove
+    DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --force-yes update --fix-missing
+    DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --force-yes autoremove
   SHELL
   ignore_failure true
   action :nothing
@@ -39,7 +39,7 @@ end.run_action(:run)
 # @see http://serverfault.com/a/482740
 execute "apt-get upgrade" do
   command <<-SHELL
-    DEBIAN_FRONTEND=noninteractive apt-get --force-yes -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' upgrade
+    DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --force-yes -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' upgrade
   SHELL
   ignore_failure true
   action :nothing
